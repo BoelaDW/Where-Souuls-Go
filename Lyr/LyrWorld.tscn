@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Lyr/Sprites/BG.png" type="Texture" id=1]
+[ext_resource path="res://Lyr/Sprites/Rock Wall L.png" type="Texture" id=2]
+[ext_resource path="res://Lyr/Sprites/Rock Wall R.png" type="Texture" id=3]
+[ext_resource path="res://Lyr/Buildings/Building1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
+
+[node name="LyrWorld" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.2, 0.2 )
+
+[node name="BG" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+
+[node name="Building1" parent="." instance=ExtResource( 4 )]
+position = Vector2( -13.2781, -362.936 )
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 380.64, 75.2429 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+limit_left = 0
+limit_right = 1920
+limit_bottom = 1080
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+
+[node name="RockWallL" type="StaticBody2D" parent="."]
+
+[node name="Rock Wall L" type="Sprite" parent="RockWallL"]
+position = Vector2( 83.4503, 13.849 )
+z_index = 100
+z_as_relative = false
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RockWallL"]
+polygon = PoolVector2Array( -9.8335, -1062.1, 50.3258, -1063.33, 54.009, -887.758, 67.5142, -919.68, 74.8806, -919.68, 82.2471, -892.669, 81.0193, -685.181, 74.8083, -499.631, 86.7499, -505.602, 96.0378, -502.948, 101.345, -487.69, 108.1, -352.942, 104.949, -171.43, 98.6464, 57.3512, 93.6044, 234.452, 69.6549, 320.166, 65.8734, 363.023, 68.3944, 591.804, 92.9742, 588.022, 102.428, 591.174, 113.142, 608.821, 119.445, 646.005, 108.1, 744.955, 82.8902, 958.61, 67.1339, 1093.48, -12.2777, 1093.48, -71.4203, 690.895, -50.3676, 198.262, -60.894, -213.318, -41.9466, -567.003, -29.3149, -1053.32 )
+
+[node name="RockWallR" type="StaticBody2D" parent="."]
+
+[node name="Rock Wall R" type="Sprite" parent="RockWallR"]
+position = Vector2( 1835.08, 16.5697 )
+z_index = 100
+z_as_relative = false
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RockWallR"]
+polygon = PoolVector2Array( 1829.32, -1062.35, 1935.28, -1060.92, 2044.11, 434.062, 1936.72, 1102.8, 1836.48, 1099.93, 1813.57, 800.648, 1804.97, 663.179, 1792.09, 605.9, 1792.01, 593.579, 1799.57, 582.865, 1822.89, 588.537, 1811.55, 506.605, 1791.38, 357.235, 1769.95, 197.782, 1753.56, 66.0594, 1749.78, 26.9838, 1749.78, -0.116943, 1754.19, -23.4362, 1761.76, -40.453, 1774.36, -48.016, 1781.29, -49.9068, 1779.4, -184.15, 1778.14, -291.293, 1776.88, -434.36, 1776.25, -510.62, 1779.4, -576.796, 1783.18, -615.242, 1785.08, -628.849, 1791.44, -642.752, 1797.4, -648.313, 1804.55, -647.916, 1815.67, -638.78, 1826.39, -626.863, 1824.8, -684.062, 1826.39, -773.833, 1827.58, -854.865 )

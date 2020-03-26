@@ -1,0 +1,112 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Lyr/Sprites/Player.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends KinematicBody2D
+
+
+const GRAVITY = 20
+
+var xSpeed = 500
+var ySpeed = 50
+
+var velocity = Vector2()
+
+
+#MOVEMENT
+var lPressed = false
+var rPressed = false
+var uPressed = false
+var dPressed = false
+
+
+
+func _ready():
+	pass
+	
+
+
+func _physics_process(delta):
+	
+	
+	get_input()
+	
+	velocity = move_and_slide(velocity)
+	
+	
+	
+	
+	
+	
+
+func get_input():
+	
+	#Movement Input, alternative method for that good feeling control
+	if Input.is_action_pressed(\"ui_up\"):
+		uPressed = true
+	else:
+		uPressed = false
+	
+	if Input.is_action_pressed(\"ui_down\"):
+		dPressed = true
+	else:
+		dPressed = false
+	
+	if Input.is_action_pressed(\"ui_right\"):
+		rPressed = true
+	else:
+		rPressed = false
+	
+	if Input.is_action_pressed(\"ui_left\"):
+		lPressed = true
+	else:
+		lPressed = false
+	
+	
+	#X Movement Control
+	if lPressed and not rPressed:
+		velocity.x = -xSpeed
+	elif rPressed and not lPressed:
+		velocity.x = xSpeed
+	else:
+		velocity.x = 0
+	
+	#Flight control
+	if uPressed and not dPressed:
+		velocity.y += -ySpeed
+	
+	
+	#Gravity with terminal velocity
+	if velocity.y < GRAVITY * 100:
+		velocity.y += GRAVITY
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 17.7463, 56.1626 )
+
+[node name="Player" type="KinematicBody2D"]
+script = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.241028, -73.6825 )
+texture = ExtResource( 1 )

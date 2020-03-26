@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Lyr/Sprites/B1 L1.png" type="Texture" id=1]
+[ext_resource path="res://Lyr/Sprites/B1 L2.png" type="Texture" id=2]
+
+[node name="Building1" type="StaticBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 21.7397, 94.2297, 209.73, 99.3382, 214.158, 103.425, 25.8265, 98.9976, 25.1454, 171.878, 224.715, 173.24, 197.47, 214.108, 199.173, 238.288, 203.26, 245.099, 210.071, 247.823, 291.465, 244.758, 298.958, 250.548, 69.0779, 254.975, 63.6289, 379.28, 340.847, 378.259, 298.958, 434.111, 300.32, 518.57, 306.45, 526.403, 316.326, 530.49, 368.773, 531.171, 376.946, 536.62, 84.4033, 545.134, 87.0573, 682.542, 423.645, 682.542, 380.997, 736.898, 386.014, 744.842, 79.113, 750.696, 92.0748, 885.331, 419.882, 885.331, 276.048, 1094.39, 159.81, 1261.64, 33.1197, 1446.45, -63.0482, 1367.01, 16.1896, 95.6447 )
+
+[node name="BuildingBase" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="BuildingRails" type="Sprite" parent="."]
+position = Vector2( -7.55261, 216.508 )
+scale = Vector2( 1.01332, 1 )
+z_index = 99
+z_as_relative = false
+texture = ExtResource( 2 )
+centered = false
